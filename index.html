@@ -132,7 +132,7 @@
   <!-- Header -->
   <header class="container">
     <h1 id="title">Engagement of Jasmine Abdel & Enes Bulut</h1>
-    <div class="invite" id="invite">Invite you to their engagement celebration</div>
+    <div class="Invite" id="invite">Invite you to their engagement celebration</div>
     <div class="pill" id="date">Saturday · February 14, 2026 · 6:00 PM</div>
     <div class="venue" id="venue">International Event Venue, Tampa, FL</div>
     <a class="btn" href="#rsvp">RSVP</a>
@@ -170,27 +170,38 @@
       </section>
 
       <!-- Right: RSVP -->
-      <section id="rsvp" class="card section-card">
-        <h2>RSVP</h2>
+    <section id="rsvp" class="card section-card">
+  <h2>RSVP</h2>
 
-        <div class="choice">
-          <label><input type="radio" name="attending" value="Yes" checked> <span>Accepts with pleasure</span></label>
-          <label><input type="radio" name="attending" value="No"> <span>Declines with regret</span></label>
-        </div>
+ <form action="https://formspree.io/f/xeorpbyk" method="POST">
 
-        <form action="https://formspree.io/f/xeorpbyk" method="POST">
-          <div class="row2">
-            <div>
-              <label>First Name
-                <input class="field" name="first_name" required />
-              </label>
-            </div>
-            <div>
-              <label>Last Name
-                <input class="field" name="last_name" required />
-              </label>
-            </div>
-          </div>
+  <!-- Attending choice -->
+  <div class="form-group">
+    <label><strong>Will you be attending?</strong></label><br>
+
+    <div class="row2">
+      <label>
+        <input type="radio" name="attending" value="Yes" checked />
+        Accepts with pleasure
+      </label>
+      <label style="margin-left: 1rem;">
+        <input type="radio" name="attending" value="No" />
+        Declines with regret
+      </label>
+    </div>
+  </div>
+    <br><br>
+
+    <div class="row2">
+      <div>
+        <label>First Name</label>
+        <input class="field" name="first_name" required />
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input class="field" name="last_name" required />
+      </div>
+    </div>
 
           <div class="row2">
             <div>
@@ -229,7 +240,7 @@
     const translations = {
       en: {
         title: "Engagement of Jasmine Abdel & Enes Bulut",
-        invite: "invite you to their engagement celebration",
+        Invite: "Invite you to their engagement celebration",
         date:  "Saturday · February 14, 2026 · 6:00 PM",
         venue: "International Event Venue, Tampa, FL"
       },
