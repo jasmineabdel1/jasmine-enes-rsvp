@@ -146,53 +146,104 @@ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' he
 
 <script>
   const t = {
-    "en": {
-      "label": "English",
-      "title": "Engagement of Jasmine Abdel & Enes Bulut",
-      "invite": "invite you to their engagement celebration",
-      "details": "Event Details",
-      "date": "February 14, 2026 – 6:00 PM",
-      "venue": "International Event Venue, Tampa, FL",
-      "rsvp": "RSVP",
-      "rsvp_note": "One form per party (include yourself in the total)."
+    en: {
+      label: "English",
+      title: "Engagement of Jasmine Abdel & Enes Bulut",
+      invite: "invite you to their engagement celebration",
+      details: "Event Details",
+      date: "February 14, 2026 – 6:00 PM",
+      venue: "International Event Venue, Tampa, FL",
+      rsvp: "RSVP",
+      rsvp_note: "One form per party (include yourself in the total).",
+      att_yes: "Accepts with pleasure",
+      att_no: "Declines with regret",
+      lbl_first: "First Name",
+      lbl_last: "Last Name",
+      lbl_email: "Email (for confirmation)",
+      lbl_phone: "Phone (optional)",
+      lbl_guests: "Number of People (including you)",
+      lbl_message: "Message (optional)",
+      lbl_consent: "It's okay to text me important event updates.",
+      btn_send: "Send RSVP"
     },
-    "ar": {
-      "label": "العربية",
-      "title": "خطوبة جاسمين عبدل و إينيس بولوت",
-      "invite": "يدعونكم لحضور حفل خطوبتهم",
-      "details": "تفاصيل المناسبة",
-      "date": "١٤ فبراير ٢٠٢٦ – الساعة السادسة مساءً",
-      "venue": "قاعة المناسبات الدولية، تامبا، فلوريدا",
-      "rsvp": "تأكيد الحضور",
-      "rsvp_note": "نموذج واحد لكل مجموعة (يشمل نفسك في العدد الكلي)."
+
+    ar: {
+      label: "العربية",
+      title: "خطوبة جاسمين عبدل و إينِس بولوت",
+      invite: "يدعوانكم لحضور حفل خطوبتهما",
+      details: "تفاصيل المناسبة",
+      date: "١٤ فبراير ٢٠٢٦ – الساعة ٦:٠٠ مساءً",
+      venue: "قاعة المناسبات الدولية، تامبا، فلوريدا",
+      rsvp: "تأكيد الحضور",
+      rsvp_note: "نموذج واحد لكل مجموعة (يشمل نفسك في العدد الكلي).",
+      att_yes: "أؤكد الحضور بكل سرور",
+      att_no: "أعتذر عن عدم الحضور",
+      lbl_first: "الاسم الأول",
+      lbl_last: "اسم العائلة",
+      lbl_email: "البريد الإلكتروني (للتأكيد)",
+      lbl_phone: "الهاتف (اختياري)",
+      lbl_guests: "عدد الحاضرين (بما فيهم أنت)",
+      lbl_message: "رسالة (اختياري)",
+      lbl_consent: "لا مانع من مراسلتي بالرسائل المهمة عن الحدث.",
+      btn_send: "إرسال التأكيد"
     },
-    "tr": {
-      "label": "Türkçe",
-      "title": "Jasmine Abdel ve Enes Bulut Nişanı",
-      "invite": "nişan törenlerine davet ediyorlar",
-      "details": "Etkinlik Detayları",
-      "date": "14 Şubat 2026 – Saat 18:00",
-      "venue": "International Event Venue, Tampa, FL",
-      "rsvp": "RSVP",
-      "rsvp_note": "Her grup için bir form (kendinizi de dahil edin)."
+
+    tr: {
+      label: "Türkçe",
+      title: "Jasmine Abdel & Enes Bulut Nişanı",
+      invite: "nişan törenlerine davet ediyorlar",
+      details: "Etkinlik Detayları",
+      date: "14 Şubat 2026 – Saat 18:00",
+      venue: "International Event Venue, Tampa, FL",
+      rsvp: "RSVP",
+      rsvp_note: "Her grup için bir form (kendinizi de dahil edin).",
+      att_yes: "Memnuniyetle katılıyorum",
+      att_no: "Üzgünüm, katılamıyorum",
+      lbl_first: "Ad",
+      lbl_last: "Soyad",
+      lbl_email: "E-posta (onay için)",
+      lbl_phone: "Telefon (isteğe bağlı)",
+      lbl_guests: "Kişi sayısı (siz dahil)",
+      lbl_message: "Mesaj (isteğe bağlı)",
+      lbl_consent: "Etkinlikle ilgili önemli mesajları almamda sakınca yok.",
+      btn_send: "RSVP Gönder"
     }
   };
 
-  function setRTL(r) {
-    const hdr = document.getElementById('hdr'),
-          main = document.getElementById('main');
-    r ? (hdr.classList.add('rtl'), main.classList.add('rtl'))
+  function setRTL(isRTL) {
+    const hdr = document.getElementById('hdr');
+    const main = document.getElementById('main');
+    if (!hdr || !main) return;
+    isRTL
+      ? (hdr.classList.add('rtl'), main.classList.add('rtl'))
       : (hdr.classList.remove('rtl'), main.classList.remove('rtl'));
   }
 
   function setLang(c) {
     const L = t[c] || t.en;
-    for (const k in L) {
-      const el = document.getElementById(k);
-      if (el) el.textContent = L[k];
-    }
-    document.getElementById('year').textContent = new Date().getFullYear();
-    setLang('en');
+    const ids = [
+      'title','invite','details','date','venue','rsvp','rsvp_note',
+      'att_yes','att_no','lbl_first','lbl_last','lbl_email','lbl_phone',
+      'lbl_guests','lbl_message','lbl_consent','btn_send'
+    ];
+
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && L[id]) el.textContent = L[id];
+    });
+
+    const langLabel = document.getElementById('lang-label');
+    if (langLabel && L.label) langLabel.textContent = L.label;
+
+    setRTL(c === 'ar');
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  }
+
+  // initialize to English on load
+  setLang('en');
+</script>
+
   }
 
   (function () {
