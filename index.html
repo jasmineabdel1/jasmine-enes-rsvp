@@ -1,132 +1,252 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Engagement RSVP — Jasmine &amp; Enes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Lora:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Engagement of Jasmine & Enes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Alex+Brush&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
-    :root{ --sage:#5c715e; --lav:#b68c8b; --gold:#d5bfa3; --cream:#faf7f2; --ink:#333415; }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{ margin:0; color:var(--ink); font-family:Lora, 'Noto Sans Arabic', serif; background:var(--cream); }
-    .bg{ position:fixed; inset:0; z-index:-2; overflow:hidden; }
-    .bg img{ width:100%; height:100%; object-fit:cover; filter:blur(2.2px) saturate(105%); transform:scale(1.02); }
-    .bg:after{ content:""; position:absolute; inset:0; background:radial-gradient(ellipse at top, rgba(255,255,255,.92), rgba(255,255,255,.85) 65%); }
-    .container{max-width:960px;margin:0 auto;padding:1.25rem}
-    .header{ text-align:center; padding:3.5rem 0 1.25rem; }
-    .names{ font-family:'Alex Brush', cursive; color:#2f4f2f; font-size:clamp(1.8rem, 3.2vw + 1rem, 3rem); text-shadow:0 1px 0 #fff; margin:.2rem 0 .35rem; }
-    .meta{ display:inline-block; margin:.5rem auto; padding:.55rem 1rem; background:rgba(255,255,255,.9); border:1px solid #e5dfd6; border-radius:10px; box-shadow:0 4px 10px rgba(92,113,94,.08); font-weight:600; }
-    .venue{ margin:.6rem 0 1rem; color:#466c46; text-shadow:0 1px 0 #fff; }
-    .card{ background:rgba(255,255,255,.92); border:1px solid #e5dfd6; border-radius:16px; padding:1.25rem; box-shadow:0 9px 30px rgba(92,113,94,.10); }
-    .verse-wrap{ margin:1rem 0 2rem; }
-    .basmala{ font-family:'Noto Sans Arabic', sans-serif; font-weight:600; color:#a78b71; text-align:center; margin:.2rem 0 .4rem; }
-    .verse{ text-align:center; font-style:italic; color:#7a7b71; border:1px solid var(--gold); border-radius:16px; padding:16px 18px; background:linear-gradient(180deg, rgba(213,191,163,.08), rgba(255,255,255,.6)); }
-    .grid{display:grid; gap:1.2rem; grid-template-columns: 1fr;}
-    @media (min-width: 800px){ .grid{grid-template-columns: 1fr 1fr;} }
-    h2.accent{color:#3e5f3e; letter-spacing:.02em; font-weight:700;}
-    .btn{ display:inline-block; background:var(--lav); color:#fff; border:none; border-radius:12px; padding:.8rem 1.15rem; font-weight:600; cursor:pointer; box-shadow:0 8px 20px rgba(92,113,94,.15); }
-    .btn:hover{filter:brightness(.96)}
-    .field{display:block; width:100%; padding:.75rem .9rem; border:1px solid #d6d4cf; border-radius:10px; background:#fff;}
-    label.small{font-size:.92rem; display:block; margin:.35rem 0 .25rem;}
-    .pill{display:inline-flex; align-items:center; gap:.5rem; margin-right:1rem}
-    .pill input{accent-color:#5c715e}
-    .muted{color:#647b64}
-    #thanks{display:none; border-radius:14px; padding:14px 16px; background:#f4fff5; border:1px solid #bfe2c0; color:#2e5a2e; margin-bottom:1rem}
-    footer{ text-align:center; color:#6b6b6b; margin:2rem 0 1.5rem }
+    :root {
+      --sage: #5c715e;
+      --cream: #fbf8f3;
+      --gold: #d9c6a5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lora', serif;
+      color: var(--sage);
+      background: var(--cream);
+      text-align: center;
+      scroll-behavior: smooth;
+    }
+
+    /* Background floral pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 0, transparent 70%), 
+                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.7) 0, transparent 70%);
+    }
+
+    h1 {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      margin-top: 1rem;
+      color: var(--sage);
+    }
+    p { margin: 0.4rem 0; }
+
+    .pill {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: #fff8f5;
+      box-shadow: 0 3px 8px rgba(0,0,0,.1);
+    }
+
+    .btn {
+      background: var(--sage);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: all .3s;
+    }
+    .btn:hover { background: #476247; }
+
+    .verse {
+      margin: 1.5rem auto;
+      max-width: 700px;
+      background: rgba(255,255,255,.7);
+      border-radius: 12px;
+      padding: 1rem;
+      font-style: italic;
+    }
+    .basmala {
+      font-family: 'Noto Sans Arabic', serif;
+      color: #b79a6c;
+      font-size: 1.2rem;
+    }
+
+    .photo-card {
+      margin: 1.5rem auto;
+      max-width: 800px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      background: #fff;
+    }
+    .photo-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 960px;
+    }
+    .card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(92,113,94,.1);
+      text-align: left;
+    }
+    h2 { color: var(--sage); margin-bottom: .8rem; }
+
+    .field {
+      display: block;
+      width: 100%;
+      padding: .6rem;
+      border-radius: 6px;
+      border: 1px solid #c8c8c8;
+      margin-top: .3rem;
+    }
+
+    .btn-submit {
+      background: var(--sage);
+      color: white;
+      border: none;
+      padding: .8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    footer { margin: 2rem 0; color: #777; }
+
+    /* Language menu */
+    .lang-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 8px;
+      padding: .3rem .8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+    .lang-menu select {
+      border: none;
+      background: transparent;
+      font-size: .9rem;
+      color: var(--sage);
+      outline: none;
+      cursor: pointer;
+    }
   </style>
 </head>
-<body>
-  <div class="bg"><img src="46904.jpg" alt=""></div>
 
-  <header class="header container">
-    <h1 class="names">Engagement of Jasmine Abdel &amp; Enes Bulut</h1>
-    <div class="meta">Saturday • February 14, 2026 • 6:00 PM</div>
-    <div class="venue"><strong>International Event Venue</strong>, Tampa, FL</div>
-    <div class="venue muted">Address: 6463 W Hillsborough Ave, Tampa, FL 33634</div>
-    <p style="margin:1rem 0;"><a class="btn" href="#rsvp">RSVP</a></p>
+<body>
+  <!-- Language selector -->
+  <div class="lang-menu">
+    <select id="lang-select" onchange="setLang(this.value)">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="tr">Türkçe</option>
+    </select>
+  </div>
+
+  <header>
+    <h1 id="title">Engagement of Jasmine Abdel & Enes Bulut</h1>
+    <p id="invite">invite you to their engagement celebration</p>
+    <p id="date" class="pill">Saturday · February 14, 2026 · 6:00 PM</p>
+    <p id="venue">International Event Venue, 6463 W Hillsborough Ave, Tampa, FL 33634</p>
+    <a href="#rsvp" class="btn">RSVP</a>
   </header>
 
-  <main class="container">
-    <section class="card verse-wrap">
+  <section>
+    <div class="card verse">
       <div class="basmala">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-      <p class="verse">
-        And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them; 
-        and He placed between you affection and mercy. — Qur'an 30:21
-      </p>
+      <p>And among His signs is that He created for you mates from among yourselves,
+      that you may find tranquility in them; and He placed between you affection and mercy.
+      — Qur'an 30:21</p>
+    </div>
+  </section>
+
+  <figure class="photo-card">
+    <img src="46904.jpg" alt="Jasmine and Enes" />
+  </figure>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Event Details</h2>
+      <ul>
+        <li><strong>Date:</strong> February 14, 2026 – 6:00 PM</li>
+        <li><strong>Venue:</strong> International Event Venue</li>
+        <li><strong>Address:</strong> 6463 W Hillsborough Ave, Tampa, FL 33634</li>
+        <li><strong>City:</strong> Tampa, FL</li>
+        <li><strong>RSVP by:</strong> December 14, 2025</li>
+      </ul>
     </section>
 
-    <section class="grid">
-      <div class="card">
-        <h2 class="accent">Event Details</h2>
-        <ul style="margin:.75rem 0;padding-left:1rem;line-height:1.8;">
-          <li><strong>Date:</strong> <span>February 14, 2026 – 6:00 PM</span></li>
-          <li><strong>Venue:</strong> <span>International Event Venue</span></li>
-          <li><strong>Address:</strong> <span>6463 W Hillsborough Ave, Tampa, FL 33634</span></li>
-          <li><strong>City:</strong> <span>Tampa, FL</span></li>
-          <li><strong>RSVP by:</strong> <span>December 14, 2025</span></li>
-        </ul>
-      </div>
+    <section class="card" id="rsvp">
+      <h2>RSVP</h2>
+      <form action="https://formspree.io/f/xeropybk" method="POST">
+        <label><input type="radio" name="attending" value="Yes" checked /> Accepts with pleasure</label><br />
+        <label><input type="radio" name="attending" value="No" /> Declines with regret</label><br /><br />
 
-      <div class="card" id="rsvp">
-        <div id="thanks"><strong>Thank you!</strong> We received your RSVP.</div>
-        <h2 class="accent">RSVP</h2>
-        <p class="muted" style="margin:.25rem 0 1rem;">One form per party (include yourself in the total).</p>
-
-        <form action="https://formspree.io/f/xeorpbyk" method="POST">
-          <input type="hidden" name="_subject" value="Engagement RSVP">
-          <input type="hidden" name="_redirect" value="https://jasmineabdel1.github.io/jasmine-enes-rsvp/?thanks=1">
-
-          <div style="margin:.4rem 0 1rem;">
-            <label class="pill"><input type="radio" name="attending" value="Yes" checked> Accepts with pleasure</label>
-            <label class="pill"><input type="radio" name="attending" value="No"> Declines with regret</label>
-          </div>
-
-          <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px;">
-            <div><label class="small">First Name</label><input class="field" required name="first_name" placeholder="First"></div>
-            <div><label class="small">Last Name</label><input class="field" required name="last_name" placeholder="Last"></div>
-          </div>
-
-          <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px; margin-top:.5rem;">
-            <div><label class="small">Email (for confirmation)</label><input class="field" type="email" name="email" placeholder="you@example.com"></div>
-            <div><label class="small">Phone (optional)</label><input class="field" name="phone" placeholder="(555) 123-4567"></div>
-          </div>
-
-          <div style="margin-top:.8rem;">
-            <label class="small">Number of People (including you)</label>
-            <input class="field" style="max-width:8rem" type="number" min="1" max="10" name="guest_count" value="1">
-          </div>
-
-          <div style="margin-top:.8rem;">
-            <label class="small">Message (optional)</label>
-            <textarea class="field" name="message" rows="4" placeholder="Allergies, song requests, etc."></textarea>
-          </div>
-
-          <label class="small" style="display:flex;align-items:flex-start;gap:.6rem;margin:.8rem 0;">
-            <input type="checkbox" name="text_updates" style="margin-top:.35rem">
-            <span class="muted">It's okay to text me important event updates.</span>
-          </label>
-
-          <button class="btn" type="submit">Send RSVP</button>
-        </form>
-      </div>
+        <label>First Name<input class="field" type="text" name="first_name" required /></label><br />
+        <label>Last Name<input class="field" type="text" name="last_name" required /></label><br />
+        <label>Email (for confirmation)<input class="field" type="email" name="email" required /></label><br />
+        <label>Phone (optional)<input class="field" type="tel" name="phone" /></label><br />
+        <label>Number of People (including you)
+          <input class="field" type="number" name="guests" min="1" value="1" max="10" />
+        </label><br />
+        <label>Message (optional)
+          <textarea class="field" name="message" rows="3" placeholder="Allergies, song requests, etc."></textarea>
+        </label><br />
+        <button type="submit" class="btn-submit">Send RSVP</button>
+      </form>
     </section>
   </main>
 
-  <footer class="container muted">© <span id="year"></span> Jasmine &amp; Enes</footer>
+  <footer>
+    © <span id="year"></span> Jasmine & Enes
+  </footer>
 
   <script>
-    (function(){
-      const params = new URLSearchParams(location.search);
-      if (params.get('thanks') === '1') {
-        const box = document.getElementById('thanks');
-        if (box) box.style.display = 'block';
+    const translations = {
+      en: {
+        title: "Engagement of Jasmine Abdel & Enes Bulut",
+        invite: "invite you to their engagement celebration",
+        date: "Saturday · February 14, 2026 · 6:00 PM",
+        venue: "International Event Venue, 6463 W Hillsborough Ave, Tampa, FL 33634"
+      },
+      ar: {
+        title: "خطوبة جاسمين عبدل وإنس بولوت",
+        invite: "يدعوانكم لحضور حفل خطوبتهما",
+        date: "السبت · 14 فبراير 2026 · الساعة 6:00 مساءً",
+        venue: "قاعة المناسبات الدولية، 6463 ويست هيلزبورو، تامبا، فلوريدا"
+      },
+      tr: {
+        title: "Jasmine Abdel & Enes Bulut Nişanı",
+        invite: "nişan törenlerine davet ediyorlar",
+        date: "14 Şubat 2026 · Saat 18:00",
+        venue: "International Event Venue, 6463 W Hillsborough Ave, Tampa, FL 33634"
       }
-      const y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-    })();
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      for (let key in t) {
+        const el = document.getElementById(key);
+        if (el) el.textContent = t[key];
+      }
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
