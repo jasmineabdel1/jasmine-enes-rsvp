@@ -240,9 +240,30 @@ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' he
     if (y) y.textContent = new Date().getFullYear();
   }
 
-  // initialize to English on load
-  setLang('en');
+  function setLang(c) {
+  const L = t[c] || t.en;
+  const ids = [
+    'title','invite','details','date','venue','rsvp','rsvp_note',
+    'att_yes','att_no','lbl_first','lbl_last','lbl_email','lbl_phone',
+    'lbl_guests','lbl_message','lbl_consent','btn_send'
+  ];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && L[id]) el.textContent = L[id];
+  });
+
+  const langLabel = document.getElementById('lang-label');
+  if (langLabel && L.label) langLabel.textContent = L.label;
+
+  setRTL(c === 'ar');
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+}
+
+// initialize to English on load
+setLang('en');
 </script>
+
 
   }
 
