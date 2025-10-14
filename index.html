@@ -132,7 +132,7 @@
   <!-- Header -->
   <header class="container">
     <h1 id="title">Engagement of Jasmine Abdel & Enes Bulut</h1>
-    <div class="Invite" id="invite">Invite you to their engagement celebration</div>
+    <div class="invite" id="invite">Invite you to their engagement celebration</div>
     <div class="pill" id="date">Saturday · February 14, 2026 · 6:00 PM</div>
     <div class="venue" id="venue">International Event Venue, Tampa, FL</div>
     <a class="btn" href="#rsvp">RSVP</a>
@@ -211,7 +211,7 @@
             </div>
             <div>
               <label>Phone (optional)
-                <input class="field" name="phone" placeholder="(555) 123-4567" />
+                <input class="field" type="tel" name="phone" inputmode="tel" placeholder="(555) 123-4567" />
               </label>
             </div>
           </div>
@@ -240,7 +240,7 @@
     const translations = {
       en: {
         title: "Engagement of Jasmine Abdel & Enes Bulut",
-        Invite: "Invite you to their engagement celebration",
+        invite: "Invite you to their engagement celebration",
         date:  "Saturday · February 14, 2026 · 6:00 PM",
         venue: "International Event Venue, Tampa, FL"
       },
@@ -269,9 +269,36 @@
       document.querySelector('header').style.textAlign = 'center';
     }
 
-    // default language + year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    setLang('en');
-  </script>
+  // default language + year
+document.getElementById('year').textContent = new Date().getFullYear();
+setLang('en');
+
+// --- Auto-update guest count when Decline selected ---
+document.addEventListener('DOMContentLoaded', () => {
+  const radios  = document.querySelectorAll('input[name="attending"]');
+  const guests  = document.querySelector('input[name="guests"]');
+
+  if (!guests || radios.length === 0) return;
+
+  function syncGuestCount() {
+    const isAttending = [...radios].some(r => r.checked && r.value === 'Yes');
+
+    if (isAttending) {
+      // Enable and ensure at least 1 when attending
+      guests.disabled = false;
+      guests.min = '1';
+      if (!guests.value || guests.value === '0') guests.value = '1';
+    } else {
+      // Disable and force 0 when declining
+      guests.min = '0';
+      guests.value = '0';
+      guests.disabled = true;
+    }
+  }
+
+  radios.forEach(r => r.addEventListener('change', syncGuestCount));
+  syncGuestCount(); // run once on load
+});
+</script>
 </body>
 </html>
